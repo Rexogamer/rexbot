@@ -1,78 +1,93 @@
-import { Client } from 'revolt.js';
-import { Message } from 'revolt.js/dist/maps/Messages';
-import { commands } from './commands';
-import { Context, Command } from '../types/command';
+import { Client } from "revolt.js";
+import { Message } from "revolt.js/dist/maps/Messages";
+import { commands } from "./commands";
+import { Context, Command } from "../types/command";
 
 export class BotFramework {
-    client: Client;
-    developers: string[];
-    prefix: string;
-    commands = commands;
+	client: Client;
+	developers: string[];
+	prefix: string;
+	commands = commands;
 
-    constructor(client: Client, developers: string[], prefix: string) {
-        this.client = client;
-        this.developers = developers;
-        this.prefix = prefix;
+	constructor(client: Client, developers: string[], prefix: string) {
+		this.client = client;
+		this.developers = developers;
+		this.prefix = prefix;
 
-        this.client.on('connecting', async () => {
-            console.info('[client] Connecting...');
-        })
-        this.client.on('connected', async () => {
-            console.info('[client] Connected!');
-        })
-        this.client.on('ready', async () => {
-            console.info(`[client] Logged in as ${client.user!.username} (${client.user!._id})!`)
-        });
-        this.client.on('dropped', async () => {
-            console.log('[client] Dropped!');
-        })
+		this.client.on("connecting", async () => {
+			console.info("[client] Connecting...");
+		});
+		this.client.on("connected", async () => {
+			console.info("[client] Connected!");
+		});
+		this.client.on("ready", async () => {
+			console.info(
+				`[client] Logged in as ${client.user!.username} (${
+					client.user!._id
+				})!`
+			);
+		});
+		this.client.on("dropped", async () => {
+			console.log("[client] Dropped!");
+		});
 
-        this.client.on('message', async msg => {
-            if (!msg.author || msg.author.bot) return
+		this.client.on("message", async (msg) => {
+			if (!msg.author || msg.author.bot) return;
 
-            const context = this.isValidContext(msg);
-            if (!context.command || !context.canExecute) return
+			const context = this.isValidContext(msg);
+			if (!context.command || !context.canExecute) return;
 
-            console.info(
-                `[command used] ${msg.author?.username} (${msg.author_id}) in channel #${msg.channel?.name} (${msg.channel_id}) of server ${msg.channel?.server?.name} (${msg.channel?.server_id}) - `
-                + `${msg.content}`
-            )
+			console.info(
+				`[command used] ${msg.author?.username} (${msg.author_id}) in channel #${msg.channel?.name} (${msg.channel_id}) of server ${msg.channel?.server?.name} (${msg.channel?.server_id}) - ` +
+					`${msg.content}`
+			);
 
-            try {
-                context.command.run(msg, context.args)
-            } catch (exc) {
-                await msg.channel?.sendMessage(`Something went wrong! Please report the following to RexBot's devs:\n\`\`\`js\n${exc}\`\`\``)
-            }
-        });
-    }
+			try {
+				context.command.run(msg, context.args);
+			} catch (exc) {
+				await msg.channel?.sendMessage(
+					`Something went wrong! Please report the following to RexBot's devs:\n\`\`\`js\n${exc}\`\`\``
+				);
+			}
+		});
+	}
 
-    isValidContext(msg: Message): Context {
-        let values: Context = { command: null, args: [], canExecute: false };
+	isValidContext(msg: Message): Context {
+		let values: Context = { command: null, args: [], canExecute: false };
 
-        const prefixMention = new RegExp(`^<@!?${this.client.user!._id}>( |)$`);
+		const prefixMention = new RegExp(`^<@!?${this.client.user!._id}>( |)$`);
 
-        const botPinged = prefixMention.test(msg.content as string);
-        if (botPinged) (
-            msg.channel?.sendMessage(`Hey! My prefix is \`${this.prefix}\`.`)
-        );
+		const botPinged = prefixMention.test(msg.content as string);
+		if (botPinged)
+			msg.channel?.sendMessage(`Hey! My prefix is \`${this.prefix}\`.`);
 
-        // ignore system messages
-        if (typeof msg.content !== "string") return values;
+		// ignore system messages
+		if (typeof msg.content !== "string") return values;
 
-        if (!(msg.content).startsWith(this.prefix)) return values;
+		if (!msg.content.startsWith(this.prefix)) return values;
 
-        const args = (msg.content).substr(this.prefix.length).split(' ');
-        const commandName = args.shift();
-        const command: Command = this.getCommand(commandName as string);
-        values.command = command;
-        values.args = args;
-        if (!command || command.developer && !this.developers.includes(msg.author_id)) return values;
+		const args = msg.content.substr(this.prefix.length).split(" ");
+		const commandName = args.shift();
+		const command: Command = this.getCommand(commandName as string);
+		values.command = command;
+		values.args = args;
+		if (!command) return values;
+		if (!command.developer && !this.developers.includes(msg.author_id))
+			msg.channel?.sendMessage(
+				"This command can only be used by the bot's developers."
+			);
+		if (command.serverOnly && !msg.channel?.server)
+			msg.channel?.sendMessage(
+				"This command can only be used in servers."
+			);
 
-        values.canExecute = true;
-        return values;
-    }
+		values.canExecute = true;
+		return values;
+	}
 
-    getCommand(value: string) {
-        return this.commands.find(cmd => cmd.name === value || cmd.aliases.includes(value))
-    }
+	getCommand(value: string) {
+		return this.commands.find(
+			(cmd) => cmd.name === value || cmd.aliases.includes(value)
+		);
+	}
 }

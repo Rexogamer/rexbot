@@ -1,6 +1,6 @@
 # RexBot
 
-RexBot is a multipurpose Revolt bot. It's currently in open beta, but it can search NPM packages, create channels and more!
+RexBot is a multipurpose Revolt bot. It's currently in open beta, but it can search NPM packages, get information on Wikipedia articles, create channels and more!
 
 ## Inviting the bot
 

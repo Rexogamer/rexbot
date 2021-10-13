@@ -45,6 +45,6 @@ An example of how to use the command. Use \<angle brackets> for required argumen
 
 Whether the command should be limited to users listed in [`config.ts`](./src/config.ts)'s `developers` field. This should be enabled for sensitive commands (e.g. bot managment commands or `eval`). For most commands, set this to `false`.
 
-#### `xyz`
+#### `serverOnly`
 
-Whether the command can only be used in guilds. This should be set to `true` for server managment and most moderation commands. For most other commands, set this to `false`.
+Whether the command can only be used in servers. This should be set to `true` for server managment and most moderation commands. For most other commands, set this to `false`.

@@ -25,25 +25,12 @@ module.exports = {
 								"There were no results for your query - did you type the name correctly?"
 							);
 						const pkg = data.results[0].package;
-						msg.channel?.sendMessage(`# ${
-							pkg.name
-						} ([view on NPM](<${pkg.links.npm}>))
-                  \n### ${pkg.description}
-                  ${
-						pkg.keywords
-							? `\n**Keywords:** ${pkg.keywords.join(", ")}`
-							: ""
-					}
-                  \n**Latest version:** v${pkg.version}
-                  \n${
-						pkg.links.homepage
-							? `[**Homepage**](<${pkg.links.homepage}>) • `
-							: ""
-					} ${
-							pkg.links.repository
-								? `[**Repository**](<${pkg.links.repository}>)`
-								: ""
-						} `);
+						msg.channel?.sendMessage(`# ${pkg.name} ([view on NPM](<${pkg.links.npm}>))
+							\n### ${pkg.description}
+							${pkg.keywords ? `\n**Keywords:** ${pkg.keywords.join(", ")}` : ""}
+							\n**Latest version:** v${pkg.version}
+							\n${pkg.links.homepage ? `[**Homepage**](<${pkg.links.homepage}>) • ` : ""} ${pkg.links.repository ? `[**Repository**](<${pkg.links.repository}>)` : ""}
+						`);
 					} else {
 						msg.channel?.sendMessage(
 							"Something went wrong :flushed:"

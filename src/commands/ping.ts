@@ -9,6 +9,6 @@ module.exports = {
 
 	run: async (msg: Message, args: string[]) => {
 		const botMsg = await msg.channel?.sendMessage(`Pong!`);
-		// todo: edit to add actual ping - botMsg?.edit(`Pong!\n(This took <insert time code here>ms.)`);
+		botMsg?.edit({ content: `Pong!\n(This took ${botMsg.createdAt-msg.createdAt}ms.)`});
 	},
 };

@@ -6,6 +6,10 @@ RexBot is a multipurpose Revolt bot. It's currently in open beta, but it can sea
 
 You can invite the bot [here](https://app.revolt.chat/bot/01FEEXZT74QWW1HSQH8B8BH1S1).
 
+## Support
+
+If you want to report a bug, suggest a feature or get help with using RexBot, you can [open an issue](https://github.com/rexogamer/rexbot/issues/new) or join [RexBot's support server](https://rvlt.gg/Z1wEBrg7) on Revolt.
+
 ## Hosting the bot
 
 If you're intending on self-hosting, please make it clear that it is **not the main instance** (or **change the name**) but give credit by **linking to this repo** (for example, in the bot's profile - something like `This bot <is based on/is an instance of> [RexBot](https://github.com/rexogamer/rexbot` will suffice).

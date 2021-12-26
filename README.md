@@ -25,8 +25,8 @@ To run the bot for testing, you'll need to install Node (preferably 16.x) and ma
 
 I (Rexogamer, the author of this bot) would like to thank the following people:
 
-- `dani33y`, for their help with testing and bug-fixing
-- All current and future [contributors to RexBot's repo](https://github.com/Rexogamer/rexbot/graphs/contributors)
-- The [Revolt team](https://github.com/revoltchat), for their work on Revolt (and particularly [revolt.js](https://github.com/revoltchat))
+-   `dani33y`, for their help with testing and bug-fixing
+-   All current and future [contributors to RexBot's repo](https://github.com/Rexogamer/rexbot/graphs/contributors)
+-   The [Revolt team](https://github.com/revoltchat), for their work on Revolt (and particularly [revolt.js](https://github.com/revoltchat))
 
-*I'd also like to give my sincere thanks to [PredaaA](https://github.com/PredaaA) - RexBot's core is based on [ChellBot](https://github.com/PredaaA/ChellBot), with some assorted fixes and features.*
+_I'd also like to give my sincere thanks to [PredaaA](https://github.com/PredaaA) - RexBot's core is based on [ChellBot](https://github.com/PredaaA/ChellBot), with some assorted fixes and features._

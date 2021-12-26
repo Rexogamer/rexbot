@@ -10,10 +10,10 @@ for (const file of commandsFiles) {
 		continue;
 	const fileName = file.split(".");
 	try {
-		commandsLoad.push(require(`../commands/${fileName[0]}.ts`));
+		commandsLoad.push(await import(`../commands/${fileName[0]}.ts`));
 		console.log(`[commands] Loaded command file ${file}!`);
 	} catch (error) {
-		commandsLoad.push(require(`../commands/${fileName[0]}.js`));
+		commandsLoad.push(await import(`../commands/${fileName[0]}.js`));
 		console.log(`[commands] Loaded command file ${file}!`);
 	}
 }

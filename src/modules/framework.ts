@@ -1,7 +1,7 @@
 import { Client } from "revolt.js";
 import { Message } from "revolt.js/dist/maps/Messages";
-import { commands } from "./commands";
-import { Context, Command } from "../types/command";
+import { commands } from "./commands.js";
+import { Context, Command } from "../types/command.js";
 
 export class BotFramework {
 	client: Client;

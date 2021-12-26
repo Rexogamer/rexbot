@@ -1,14 +1,14 @@
 import { Message } from "revolt.js/dist/maps/Messages";
 
-module.exports = {
-	name: "ping",
-	aliases: ["pong"],
-	description: "Pong.",
-	developer: false,
-	serverOnly: false,
+export const name = "ping";
+export const aliases = ["pong"];
+export const description = "Pong.";
+export const developer = false;
+export const serverOnly = false;
 
-	run: async (msg: Message, args: string[]) => {
-		const botMsg = await msg.channel?.sendMessage(`Pong!`);
-		botMsg?.edit({ content: `Pong!\n(This took ${botMsg.createdAt-msg.createdAt}ms.)`});
-	},
-};
+export async function run(msg: Message, args: string[]) {
+	const botMsg = await msg.channel?.sendMessage(`Pong!`);
+	botMsg?.edit({
+		content: `Pong!\n(This took ${botMsg.createdAt - msg.createdAt}ms.)`,
+	});
+}

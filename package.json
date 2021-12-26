@@ -3,9 +3,10 @@
 	"version": "0.1.0",
 	"description": "A multipurpose Revolt bot.",
 	"main": "src/index.js",
+	"type": "module",
 	"scripts": {
 		"watch": "tsc-watch",
-		"dev": "ts-node-dev ./src/index.ts",
+		"dev": "tsc-watch --onSuccess \"node --experimental-specifier-resolution=node dist\"",
 		"build": "tsc"
 	},
 	"repository": {
@@ -23,15 +24,15 @@
 	},
 	"homepage": "https://github.com/Rexogamer/rexbot#readme",
 	"dependencies": {
-		"node-fetch": "^2.6.6",
+		"esm": "^3.2.25",
+		"node-fetch": "^3.1.0",
 		"revolt-api": "^0.5.3-alpha.10",
-		"revolt.js": "^5.1.0-alpha.10",
+		"revolt.js": "^5.2.2",
 		"ulid": "^2.3.0"
 	},
 	"devDependencies": {
 		"@types/node": "^16.11.11",
-		"@types/node-fetch": "^2.5.12",
-		"@types/ws": "^7.4.7",
+		"@types/ws": "^8.2.2",
 		"dotenv": "^10.0.0",
 		"ts-node": "^10.4.0",
 		"ts-node-dev": "^1.1.8",

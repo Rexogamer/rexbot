@@ -1,8 +1,8 @@
-require("dotenv").config();
+import "./env.js";
 
 import { Client } from "revolt.js";
-import { config } from "./config";
-import { BotFramework } from "./modules/framework";
+import { config } from "./config.js";
+import { BotFramework } from "./modules/framework.js";
 
 class RexBot extends Client {
 	framework: BotFramework;

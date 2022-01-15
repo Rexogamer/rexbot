@@ -52,6 +52,23 @@ export class BotFramework {
 		});
 	}
 
+	commandChecks(msg: Message, command: Command) {
+		if (!msg.author?._id || command.developer && !this.developers.includes(msg.author._id)
+		) {
+			msg.channel?.sendMessage(
+				"This command can only be used by the bot's developers."
+			);
+			return true;
+		}
+		else if (command.serverOnly && !msg.channel?.server) {
+			msg.channel?.sendMessage(
+				"This command can only be used in servers."
+			);
+			return true;
+		}
+		else return false;
+	}
+
 	isValidContext(msg: Message): Context {
 		let values: Context = { command: null, args: [], canExecute: false };
 
@@ -71,17 +88,13 @@ export class BotFramework {
 		const command: Command = this.getCommand(commandName as string);
 		values.command = command;
 		values.args = args;
+		
 		if (!command) return values;
-		if (!command.developer && !this.developers.includes(msg.author_id))
-			msg.channel?.sendMessage(
-				"This command can only be used by the bot's developers."
-			);
-		if (command.serverOnly && !msg.channel?.server)
-			msg.channel?.sendMessage(
-				"This command can only be used in servers."
-			);
 
-		values.canExecute = true;
+		const issues = this.commandChecks(msg, command);
+		console.log(issues);
+
+		if (!issues) values.canExecute = true;
 		return values;
 	}
 

@@ -26,8 +26,8 @@
 	"dependencies": {
 		"esm": "^3.2.25",
 		"node-fetch": "^3.1.0",
-		"revolt-api": "^0.5.3-alpha.10",
-		"revolt.js": "^5.2.2",
+		"revolt-api": "^0.5.3-alpha.12",
+		"revolt.js": "^5.2.7",
 		"ulid": "^2.3.0"
 	},
 	"devDependencies": {

@@ -12,7 +12,17 @@ export const serverOnly = false;
 export async function run(msg: Message, args: string[]) {
 	const input = args.join(" ");
 	if (!input) {
-		return msg.channel?.sendMessage("You need to specify an article.");
+		return msg.channel?.sendMessage({
+			content: " ",
+			embeds: [
+				{
+					type: "Text",
+					title: "No article specified",
+					description: "You need to specify an article.",
+					colour: "var(--error)",
+				},
+			],
+		});
 	} else {
 		const url = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(
 			args.join(" ")
@@ -27,40 +37,51 @@ export async function run(msg: Message, args: string[]) {
 		};
 		try {
 			const rawData = await fetch(url, options);
-			const data = await rawData.json();
+			const data = (await rawData.json()) as any;
 			if (data) {
 				// article not found, return error message
-				// @ts-ignore
 				if (data.type === notFoundType)
-					return msg.channel?.sendMessage(
-						`# Article not found\n${input} doesn't seem to be an article - did you spell the title correctly?`
-					);
+					return msg.channel?.sendMessage({
+						content: " ",
+						embeds: [
+							{
+								type: "Text",
+								title: "Article not found",
+								description: `${input} doesn't seem to be an article - did you spell the title correctly?`,
+								colour: "var(--error)",
+							},
+						],
+					});
 				// check if article has extract
-				// @ts-ignore
 				const noExtract = data.type === "no-extract";
-				// @ts-ignore
-				const message = `# ${data.title}\n### ${
-					// @ts-ignore
-					data.description ?? "No short description"
-				}\n> ${
-					noExtract
-						? "*No extract available - feel free to take a look at the page using the links below*"
-						: // @ts-ignore
-						  data.extract
-				}\n\n**[Link](<${
-					// @ts-ignore
-					data.content_urls.desktop.page
-				}>) ([mobile view](<${
-					// @ts-ignore
-					data.content_urls.mobile.page
-				}>)) • [Page history](<${
-					// @ts-ignore
-					data.content_urls.desktop.history
-				}>) ([mobile view](<${
-					// @ts-ignore
-					data.content_urls.mobile.history
-				}>))**`;
-				msg.channel?.sendMessage(message);
+				msg.channel?.sendMessage({
+					content: " ",
+					embeds: [
+						{
+							type: "Text",
+							title: `${data.title} on Wikipedia`,
+							description: `*${
+								data.description ??
+								"This article has no short description."
+							}*
+							\n**Extract**\n${
+								noExtract
+									? "*No extract available - feel free to take a look at the page using the links below*"
+									: `${data.extract}`
+							}
+							\n**Links**\n[View article](<${
+								data.content_urls.desktop.page
+							}>) ([mobile view](<${
+								data.content_urls.mobile.page
+							}>)) • [Page history](<${
+								data.content_urls.desktop.history
+							}>) ([mobile view](<${
+								data.content_urls.mobile.history
+							}>))`,
+							colour: "var(--accent)",
+						},
+					],
+				});
 			} else {
 				msg.channel?.sendMessage(
 					"There was an issue fetching the data."

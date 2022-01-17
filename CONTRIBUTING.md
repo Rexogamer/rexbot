@@ -41,7 +41,7 @@ An example of how to use the command. Use \<angle brackets> for required argumen
 
 #### `developer`
 
-Whether the command should be limited to users listed in [`config.ts`](./src/config.ts)'s `developers` field. This should be enabled for sensitive commands (e.g. bot managment commands or `eval`). For most commands, set this to `false`.
+Whether the command should be limited to users listed in [`config.ts`](./src/config.ts)'s `developers` field. This should be enabled for sensitive commands (e.g. bot management commands or `eval`). For most commands, set this to `false`.
 
 #### `serverOnly`
 

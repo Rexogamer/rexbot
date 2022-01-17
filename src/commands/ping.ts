@@ -1,3 +1,4 @@
+import { maxHeaderSize } from "http";
 import { Message } from "revolt.js/dist/maps/Messages";
 
 export const name = "ping";
@@ -8,7 +9,5 @@ export const serverOnly = false;
 
 export async function run(msg: Message, args: string[]) {
 	const botMsg = await msg.channel?.sendMessage(`Pong!`);
-	botMsg?.edit({
-		content: `Pong!\n(This took ${botMsg.createdAt - msg.createdAt}ms.)`,
-	});
+	botMsg?.edit({content: " ", embeds: [{"type": "Text", "title": "Pong!", "description": `This took ${botMsg.createdAt - msg.createdAt}ms.`, "colour": "var(--accent)"}]});
 }

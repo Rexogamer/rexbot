@@ -92,7 +92,6 @@ export class BotFramework {
 		if (!command) return values;
 
 		const issues = this.commandChecks(msg, command);
-		console.log(issues);
 
 		if (!issues) values.canExecute = true;
 		return values;

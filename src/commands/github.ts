@@ -80,7 +80,11 @@ export async function run(msg: Message, args: string[]) {
 						\n**Forks**\n${repo.forks_count} ${repo.forks_count === 1 ? "fork" : "forks"}
 						\n**Links**\n[View on GitHub](${repo.url}) • [Issues](${
 							repo.url
-						}/issues) • [Pull requests](${repo.url}/pulls)`,
+						}/issues) • [Pull requests](${repo.url}/pulls)${
+							repo.homepage
+								? ` • [Homepage (\`${repo.homepage}\`)](${repo.homepage})`
+								: ""
+						}`,
 						colour: "var(--accent)",
 					},
 				],

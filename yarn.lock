@@ -106,10 +106,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^16.11.11":
-  version: 16.11.19
-  resolution: "@types/node@npm:16.11.19"
-  checksum: a9ba0cd1e61c8ad50f3fc9c2b37b795bf0286dacb39dcc985da90328abf0c5151dffe9932d20bc9a6a52c3ce7bfc1e5a7c2dc1416480fb84f1c2d70e25caeba0
+"@types/node@npm:^16.11.21":
+  version: 16.11.21
+  resolution: "@types/node@npm:16.11.21"
+  checksum: 75b679dc6375cf09bc14a2d1b344be6f3fd8ea50f212b0d60970dc9e175cef45e44c284c716eb9e766ffa52d0c83b689adb3d1911b6dd8649c560b8f77442a22
   languageName: node
   linkType: hard
 
@@ -1215,10 +1215,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"revolt-api@npm:0.5.3-alpha.12, revolt-api@npm:^0.5.3-alpha.12":
+"revolt-api@npm:0.5.3-alpha.12":
   version: 0.5.3-alpha.12
   resolution: "revolt-api@npm:0.5.3-alpha.12"
   checksum: ec7e1d2ac6551e15d40e9e7eff3481d6d9cb5123fc785ac156dc61013e1d74435450c4f28c08e2330a5fc6f107178176168bb443698e9037efaf533b6883fed1
+  languageName: node
+  linkType: hard
+
+"revolt-api@npm:^0.5.3-alpha.12":
+  version: 0.5.3-alpha.8-patch.0
+  resolution: "revolt-api@npm:0.5.3-alpha.8-patch.0"
+  checksum: ae76b81ffbd73a081ea8f9bb5e0718e43cc80d1078b3586385063b8528ec7c20e0ad604af361f9a544900296fdc6aa3fc2ae73f4d49d419d4d3cbdad55b0c367
   languageName: node
   linkType: hard
 
@@ -1245,7 +1252,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "rexbot@workspace:."
   dependencies:
-    "@types/node": ^16.11.11
+    "@types/node": ^16.11.21
     "@types/ws": ^8.2.2
     dotenv: ^14.2.0
     esm: ^3.2.25
@@ -1254,7 +1261,7 @@ __metadata:
     revolt.js: ^5.2.7
     ts-node: ^10.4.0
     ts-node-dev: ^1.1.8
-    tsc-watch: ^4.5.0
+    tsc-watch: ^4.6.0
     typescript: ^4.5.5
     ulid: ^2.3.0
   languageName: unknown
@@ -1589,7 +1596,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tsc-watch@npm:^4.5.0":
+"tsc-watch@npm:^4.6.0":
   version: 4.6.0
   resolution: "tsc-watch@npm:4.6.0"
   dependencies:

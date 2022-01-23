@@ -83,7 +83,7 @@ export class BotFramework {
 
 		if (!msg.content.startsWith(this.prefix)) return values;
 
-		const args = msg.content.substr(this.prefix.length).split(" ");
+		const args = msg.content.slice(this.prefix.length).split(" ");
 		const commandName = args.shift();
 		const command: Command = this.getCommand(commandName as string);
 		values.command = command;

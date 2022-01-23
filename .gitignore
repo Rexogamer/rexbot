@@ -106,3 +106,4 @@ dist
 # Yarn files
 .yarn/install-state.gz
 .yarn/build-state.yml
+.yarn/cache

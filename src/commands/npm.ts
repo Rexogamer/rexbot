@@ -1,5 +1,7 @@
 import { Message } from "revolt.js/dist/maps/Messages";
 import fetch from "node-fetch";
+import { stringify } from "querystring";
+import { strings } from "../i18n/en_GB";
 
 export const name = "npm";
 export const aliases = ["npmsearch"];
@@ -48,17 +50,16 @@ export async function run(msg: Message, args: string[]) {
 				embeds: [
 					{
 						type: "Text",
-						title: `${pkg.name} on NPM`,
+						title: strings.npm.npmTitle(pkg.name),
 						description: `${
-							pkg.description ??
-							"*This library has no description.*"
+							pkg.description ?? strings.npm.noDesc
 						}\n${
 							pkg.keywords
 								? `\n**Keywords**\n\`${pkg.keywords.join(
 										"`, `"
 								  )}\`\n`
 								: ""
-						}\n**Latest version**\nv${
+						}\n${strings.npm.latestVer}\nv${
 							pkg.version
 						}\n\n**Links**\n[View on NPM](${pkg.links.npm}) ${
 							pkg.links.homepage
@@ -70,7 +71,7 @@ export async function run(msg: Message, args: string[]) {
 								: ""
 						}`,
 						url: pkg.links.npm,
-						colour: "var(--accent)",
+						colour: strings.embeds.accent,
 					},
 				],
 			});

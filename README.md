@@ -12,7 +12,7 @@ If you want to report a bug, suggest a feature or get help with using RexBot, yo
 
 ## Hosting the bot
 
-If you're intending on self-hosting, please make it clear that it is **not the main instance** (or **change the name**) but give credit by **linking to this repo** (for example, in the bot's profile - something like `This bot <is based on/is an instance of> [RexBot](https://github.com/rexogamer/rexbot` will suffice).
+If you're intending on self-hosting, please make it clear that it is **not the main instance** (or **change the name**) but give credit by **linking to this repo** (for example, in the bot's profile - something like `This bot <is based on/is an instance of> [RexBot](https://github.com/rexogamer/rexbot)` will suffice).
 
 To run the bot for testing, you'll need to install Node (preferably 16.x), Yarn 3.x ([see here](https://yarnpkg.com/getting-started/install) for install steps) and make a bot on Revolt. Then, do the following:
 

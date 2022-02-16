@@ -106,10 +106,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^16.11.21":
-  version: 16.11.21
-  resolution: "@types/node@npm:16.11.21"
-  checksum: 75b679dc6375cf09bc14a2d1b344be6f3fd8ea50f212b0d60970dc9e175cef45e44c284c716eb9e766ffa52d0c83b689adb3d1911b6dd8649c560b8f77442a22
+"@types/node@npm:^16.11.25":
+  version: 16.11.25
+  resolution: "@types/node@npm:16.11.25"
+  checksum: 0b6e25a81364be89256ad1a36341e27b387e646d3186e270108a8bb7b6ecdfdf5ae037aa1c75a5117b8a7509c80093b75431cd5cfcfbc4d553b52e7db2ca272e
   languageName: node
   linkType: hard
 
@@ -419,10 +419,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv@npm:^14.2.0":
-  version: 14.2.0
-  resolution: "dotenv@npm:14.2.0"
-  checksum: 85a0e44918ef49e64c278f757dab50a156b9a6ca67f708876fd81d265e575e35b67387fc681d910df99368d6c1edca66cd546edeb0f7db3b499cb876c999233e
+"dotenv@npm:^16.0.0":
+  version: 16.0.0
+  resolution: "dotenv@npm:16.0.0"
+  checksum: 664cebb51f0a9a1d1b930f51f0271e72e26d62feaecc9dc03df39453dd494b4e724809ca480fb3ec3213382b1ed3f791aaeb83569a137f9329ce58efd4853dbf
   languageName: node
   linkType: hard
 
@@ -1222,9 +1222,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"revolt.js@npm:^5.2.7":
-  version: 5.2.7
-  resolution: "revolt.js@npm:5.2.7"
+"revolt.js@npm:^5.2.8":
+  version: 5.2.8
+  resolution: "revolt.js@npm:5.2.8"
   dependencies:
     "@insertish/exponential-backoff": 3.1.0-patch.0
     "@insertish/isomorphic-ws": ^4.0.1
@@ -1237,7 +1237,7 @@ __metadata:
     revolt-api: 0.5.3-alpha.12
     ulid: ^2.3.0
     ws: ^8.2.2
-  checksum: 8aea9b96f85ae22191967d2fa27ffc67a988eda9510387018cb72ca302c015c75102315c1e5e786dd1ff8c9e86712a93d416c0c639c79cff3f4954a6b75360f8
+  checksum: 1b66fe14f80e4e7b706dc65057d552e210ba834c98c92bff6de652eedc33b89423ae50987ee09ee99d8789e9aa215ed689a2cdd7597f3c4d06f4dfb79e59e67a
   languageName: node
   linkType: hard
 
@@ -1245,13 +1245,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "rexbot@workspace:."
   dependencies:
-    "@types/node": ^16.11.21
+    "@types/node": ^16.11.25
     "@types/ws": ^8.2.2
-    dotenv: ^14.2.0
+    dotenv: ^16.0.0
     node-fetch: ^3.2.0
     revolt-api: ^0.5.3-alpha.12
-    revolt.js: ^5.2.7
-    ts-node: ^10.4.0
+    revolt.js: ^5.2.8
+    ts-node: ^10.5.0
     ts-node-dev: ^1.1.8
     tsc-watch: ^4.6.0
     typescript: ^4.5.5
@@ -1531,9 +1531,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-node@npm:^10.4.0":
-  version: 10.4.0
-  resolution: "ts-node@npm:10.4.0"
+"ts-node@npm:^10.5.0":
+  version: 10.5.0
+  resolution: "ts-node@npm:10.5.0"
   dependencies:
     "@cspotcode/source-map-support": 0.7.0
     "@tsconfig/node10": ^1.0.7
@@ -1546,6 +1546,7 @@ __metadata:
     create-require: ^1.1.0
     diff: ^4.0.1
     make-error: ^1.1.1
+    v8-compile-cache-lib: ^3.0.0
     yn: 3.1.1
   peerDependencies:
     "@swc/core": ">=1.2.50"
@@ -1563,7 +1564,7 @@ __metadata:
     ts-node-script: dist/bin-script.js
     ts-node-transpile-only: dist/bin-transpile.js
     ts-script: dist/bin-script-deprecated.js
-  checksum: 3933ac0a937d33c45e04a6750fcdd3e765eb2897d1da1307cd97ac52af093bcfb632ec0453a75000a65c8b5b7bdb32b1077050a186dcc556e62657cb592e6d49
+  checksum: d51ac8a9b3582ce3705cef8d35f3372e40caa277dbd7c7baeb651961538f13d2f11f22402614348f78d9b10501bd1cb5f05ec4f2ec9a74bd0e288de769c32335
   languageName: node
   linkType: hard
 
@@ -1668,6 +1669,13 @@ __metadata:
   version: 1.0.2
   resolution: "util-deprecate@npm:1.0.2"
   checksum: 474acf1146cb2701fe3b074892217553dfcf9a031280919ba1b8d651a068c9b15d863b7303cb15bd00a862b498e6cf4ad7b4a08fb134edd5a6f7641681cb54a2
+  languageName: node
+  linkType: hard
+
+"v8-compile-cache-lib@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "v8-compile-cache-lib@npm:3.0.0"
+  checksum: 674e312bbca796584b61dc915f33c7e7dc4e06d196e0048cb772c8964493a1ec723f1dd014d9419fd55c24a6eae148f60769da23f622e05cd13268063fa1ed6b
   languageName: node
   linkType: hard
 

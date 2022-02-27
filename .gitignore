@@ -107,3 +107,6 @@ dist
 .yarn/install-state.gz
 .yarn/build-state.yml
 .yarn/cache
+
+# Local statuses
+src/statuses.ts

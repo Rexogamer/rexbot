@@ -2,6 +2,7 @@ import { Client } from "revolt.js";
 import { Message } from "revolt.js/dist/maps/Messages";
 import { commands } from "./commands.js";
 import { Context, Command } from "../types/command.js";
+import { statuses } from "../statuses.js";
 
 export class BotFramework {
 	client: Client;
@@ -21,12 +22,26 @@ export class BotFramework {
 			console.info("[client] Connected!");
 		});
 		this.client.on("ready", async () => {
+			const id = client.user!._id;
 			console.info(
-				`[client] Logged in as ${client.user!.username} (${
-					client.user!._id
-				})!`
+				`[client] Logged in as ${client.user!.username} (${id})!`
 			);
+
+			// change the bot's status every 10 minutes
+			setInterval(async () => {
+				const index =
+					Math.floor(Math.random() * statuses.length + 1) - 1;
+				// @ts-ignore - the route type definitions don't like `/users/@me`
+				await client.req("PATCH", `/users/@me`, {
+					status: statuses[index],
+				});
+			}, 300000);
+			// @ts-ignore
+			client.req("PATCH", `/users/@me`, {
+				status: { presence: "Online", text: "amogus" },
+			});
 		});
+
 		this.client.on("dropped", async () => {
 			console.log("[client] Dropped!");
 		});

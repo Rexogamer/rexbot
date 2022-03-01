@@ -24,20 +24,20 @@
 	},
 	"homepage": "https://github.com/Rexogamer/rexbot#readme",
 	"dependencies": {
-		"node-fetch": "^3.2.0",
+		"node-fetch": "^3.2.1",
 		"revolt-api": "^0.5.3-alpha.12",
 		"revolt.js": "^5.2.8",
 		"ulid": "^2.3.0"
 	},
 	"devDependencies": {
-		"@types/node": "^16.11.25",
-		"@types/ws": "^8.2.2",
+		"@types/node": "^16.11.26",
+		"@types/ws": "^8.5.1",
 		"dotenv": "^16.0.0",
 		"tsc-watch": "^4.6.0",
-		"typescript": "^4.5.5"
+		"typescript": "^4.6.2"
 	},
 	"resolutions": {
 		"follow-redirects": "^1.14.8"
 	},
-	"packageManager": "yarn@3.1.1"
+	"packageManager": "yarn@3.2.0"
 }

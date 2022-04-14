@@ -9,6 +9,6 @@ export const developer = true;
 export const serverOnly = false;
 
 export async function run(msg: Message, args: string[]) {
-	await msg.channel?.sendMessage("Shutting down...");
+	await msg.channel?.sendMessage(strings.shutdown.response);
 	process.exit();
 }

@@ -15,11 +15,21 @@ export async function run(msg: Message, args: string[]) {
 				.replace(/@/g, "@" + String.fromCharCode(8203));
 		else return text;
 	};
+	const response = (input: string) => {
+		if (input.length > 2000) {
+			console.log(input);
+			return "The output was too long, so I've `console.log`ged it.";
+		} else if (input.length === 0) {
+			return "There was no output :flushed:";
+		} else return input;
+	};
 	try {
 		const input = args.join(" ");
 		let output = eval(input);
 		if (typeof output !== "string") output = util.inspect(output);
-		return msg.channel?.sendMessage(clean(output));
+		const cleanOutput = clean(output);
+		const content = response(cleanOutput);
+		return msg.channel?.sendMessage(content);
 	} catch (error) {
 		return msg.channel?.sendMessage(
 			`# Something went wrong\n\n### There appears to have been an error - here's the error message:\n\n\`\`\`${error}\`\`\``

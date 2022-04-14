@@ -12,14 +12,15 @@ export async function run(msg: Message) {
 	const mentionedUser = msg.mention_ids
 		? msg.client.users.get(msg.mention_ids[0])
 		: null;
+	const avatarUrl = `https://autumn.revolt.chat/avatars/${
+		mentionedUser ? mentionedUser.avatar?._id : msg.author?.avatar?._id
+	}/${
+		mentionedUser
+			? mentionedUser.avatar?.filename
+			: msg.author?.avatar?.filename
+	}`;
 	return msg.channel?.sendMessage({
-		content: `[**Link**](<https://autumn.revolt.chat/avatars/${
-			mentionedUser ? mentionedUser.avatar?._id : msg.author?.avatar?._id
-		}/${
-			mentionedUser
-				? mentionedUser.avatar?.filename
-				: msg.author?.avatar?.filename
-		}>)`,
+		content: `[**Link**](<${avatarUrl}>)`,
 		embeds: [
 			{
 				type: "Text",
@@ -28,15 +29,7 @@ export async function run(msg: Message) {
 					mentionedUser ? `${mentionedUser.username}'s` : "Your"
 				} avatar**`,
 				colour: strings.embeds.accent,
-				media: `https://autumn.revolt.chat/avatars/${
-					mentionedUser
-						? mentionedUser.avatar?._id
-						: msg.author?.avatar?._id
-				}/${
-					mentionedUser
-						? mentionedUser.avatar?.filename
-						: msg.author?.avatar?.filename
-				}`,
+				// media: avatarUrl,
 			},
 		],
 	});

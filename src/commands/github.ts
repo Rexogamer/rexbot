@@ -23,11 +23,16 @@ export async function run(msg: Message, args: string[]) {
 			],
 		});
 	} else {
+		// prepare arg for usage
+		const rawInput = args.join(" ");
+		// prettier messes with the regex, so...
+		// prettier-ignore
+		const regex = new RegExp("http(s)?:\/\/github.com\/")
+		const input = rawInput.replace(regex, "");
+
 		// urls
-		const url = `https://api.github.com/repos/${args.join(" ")}`;
-		const commitsUrl = `https://api.github.com/repos/${args.join(
-			" "
-		)}/commits`;
+		const url = `https://api.github.com/repos/${input}`;
+		const commitsUrl = `https://api.github.com/repos/${input}/commits`;
 
 		// fetch repo
 		const rawData = await fetch(url);
@@ -78,9 +83,9 @@ export async function run(msg: Message, args: string[]) {
 							repo.watchers_count === 1 ? "watcher" : "watchers"
 						}
 						\n**Forks**\n${repo.forks_count} ${repo.forks_count === 1 ? "fork" : "forks"}
-						\n**Links**\n[View on GitHub](${repo.url}) • [Issues](${
-							repo.url
-						}/issues) • [Pull requests](${repo.url}/pulls)${
+						\n**Links**\n[View on GitHub](${repo.html_url}) • [Issues](${
+							repo.html_url
+						}/issues) • [Pull requests](${repo.html_url}/pulls)${
 							repo.homepage
 								? ` • [Homepage (\`${repo.homepage}\`)](${repo.homepage})`
 								: ""

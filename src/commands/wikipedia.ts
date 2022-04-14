@@ -1,5 +1,6 @@
 import { Message } from "revolt.js/dist/maps/Messages";
 import fetch from "node-fetch";
+import { strings } from "../i18n/en_GB";
 
 export const name = "wikipedia";
 export const aliases = ["wiki", "wp", "wikisearch"];
@@ -31,8 +32,7 @@ export async function run(msg: Message, args: string[]) {
 			"https://mediawiki.org/wiki/HyperSwitch/errors/not_found";
 		const options = {
 			headers: {
-				"User-Agent":
-					"RexBot/1.0 (https://github.com/rexogamer/rexbot, User:Remagoxer)",
+				"User-Agent": strings.wikipedia.userAgent,
 			},
 		};
 		try {
@@ -47,7 +47,8 @@ export async function run(msg: Message, args: string[]) {
 							{
 								type: "Text",
 								title: "Article not found",
-								description: `${input} doesn't seem to be an article - did you spell the title correctly?`,
+								description:
+									strings.wikipedia.cannotFindArticle(input),
 								colour: "var(--error)",
 							},
 						],
@@ -64,11 +65,7 @@ export async function run(msg: Message, args: string[]) {
 								data.description ??
 								"This article has no short description."
 							}*
-							\n**Extract**\n${
-								noExtract
-									? "*No extract available - feel free to take a look at the page using the links below*"
-									: `${data.extract}`
-							}
+							\n**Extract**\n${noExtract ? strings.wikipedia.noExtract : `${data.extract}`}
 							\n**Links**\n[View article](<${
 								data.content_urls.desktop.page
 							}>) ([mobile view](<${
@@ -83,12 +80,12 @@ export async function run(msg: Message, args: string[]) {
 					],
 				});
 			} else {
-				msg.channel?.sendMessage(
-					"There was an issue fetching the data."
-				);
+				msg.channel?.sendMessage(strings.errors.couldNotFetchData);
 			}
 		} catch (error) {
-			msg.channel?.sendMessage("Something went wrong.");
+			msg.channel?.sendMessage(
+				strings.errors.genericErrorWithTrace(error)
+			);
 		}
 	}
 }

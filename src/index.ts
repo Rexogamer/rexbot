@@ -17,6 +17,8 @@ class RexBot extends Client {
 	}
 }
 
-let client = new RexBot();
+let rexbotClient = new RexBot();
 
-client.loginBot(process.env.TOKEN!);
+rexbotClient.loginBot(process.env.TOKEN!);
+
+export { rexbotClient as extClient };

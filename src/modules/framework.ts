@@ -22,21 +22,15 @@ export class BotFramework {
 			console.info("[client] Connected!");
 		});
 		this.client.on("ready", async () => {
-			const id = client.user!._id;
-			console.info(
-				`[client] Logged in as ${client.user!.username} (${id})!`
-			);
-
-			// change the bot's status every 10 minutes
-			setInterval(async () => {
-				const index =
-					Math.floor(Math.random() * statuses.length + 1) - 1;
-				// @ts-expect-error - the route type definitions don't like `/users/@me`
-				await client.req("PATCH", `/users/@me`, {
-					status: statuses[index],
-				});
-			}, 300000);
-		});
+			const id = client.user._id;
+                        console.info(`[client] Logged in as ${client.user.username} (${id})!`);
+                        (async function activityChanger() {
+                             const index = Math.floor(Math.random() * statuses.length + 1) - 1;
+		        // @ts-expect-error - the route type definitions don't like `/users/@me`
+                             await client.api.patch("/users/@me", {status: statuses[index]});
+                        setTimeout(activityChanger.bind(this), 300000);
+                        }).bind(this)();
+                });
 
 		this.client.on("dropped", async () => {
 			console.log("[client] Dropped!");
